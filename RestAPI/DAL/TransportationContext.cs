@@ -9,6 +9,13 @@ namespace DAL
 {
 	public class TransportationContext : DbContext
 	{
+		public TransportationContext(DbContextOptions<TransportationContext> options) : base(options) { }
 
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+
+		}
 	}
 }
