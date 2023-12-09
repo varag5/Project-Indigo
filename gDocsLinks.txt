@@ -5,3 +5,6 @@ https://docs.google.com/document/d/1ZGL2DHfnVVoZdkXr_EJFEj3pg__7s913ZzbDPpkLP68/
 
 Technical background analysis:
 https://docs.google.com/document/d/1f0BSjxzwyUG2wfU9wFDg62Uq-cUlhkI8eQF1nrah_9g/edit?usp=sharing
+
+Functional and Non-Functional Requirements:
+https://docs.google.com/document/d/19tkNZacj-D2MbTSXF0HdeFLegvavtg_7gRvUYdx11QI/edit?usp=sharing
