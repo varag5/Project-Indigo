@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+	/// <summary>
+	/// Controller for all the itineraries, which are defined by the users.
+	/// </summary>
 	[Route("api/itinerary")]
 	[ApiController]
 	public class ItineraryController : ControllerBase

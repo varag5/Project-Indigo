@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+	/// <summary>
+	/// Controller for all the recordings. A recording is created by a user by measuring one itinerary.
+	/// </summary>
 	[Route("api/recording")]
 	[ApiController]
 	public class RecordingController : ControllerBase

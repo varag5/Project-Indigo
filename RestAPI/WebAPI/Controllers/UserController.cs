@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+	/// <summary>
+	/// Controller for all the users.
+	/// </summary>
 	[Route("api/user")]
 	[ApiController]
 	public class UserController : ControllerBase

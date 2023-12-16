@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+	/// <summary>
+	/// Controller for the routes, which is provided by a public transport company.
+	/// </summary>
 	[Route("api/route")]
 	[ApiController]
 	public class RouteController : ControllerBase
