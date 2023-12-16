@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -7,13 +9,15 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class UserController : ControllerBase
 	{
+		private readonly IUserService userService;
+
 		// POST: api/user
 		/// <summary>
 		/// Creates a new user.
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateUser()
+		public IActionResult CreateUser([FromBody]UserDto user)
 		{
 			return Ok("Hello World!");
 		}
@@ -25,7 +29,7 @@ namespace WebAPI.Controllers
 		/// <param name="id">The original id of the user</param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateUser(int id)
+		public IActionResult UpdateUser(int id, [FromBody]UserDto user)
 		{
 			return Ok("Hello World!");
 		}
@@ -37,7 +41,7 @@ namespace WebAPI.Controllers
 		/// <param name="id">The id of the user</param>
 		/// <returns></returns>
 		[HttpGet("{id}")]
-		public IActionResult GetUser(int id)
+		public ActionResult<UserDto> GetUser(int id)
 		{
 			return Ok($"Hello! User is {id}");
 		}

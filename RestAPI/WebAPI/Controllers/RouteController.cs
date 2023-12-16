@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -7,13 +10,15 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class RouteController : ControllerBase
 	{
+		private readonly IRouteService routeService;
+
 		// POST: api/route
 		/// <summary>
 		/// Creates a new route.
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewRoute()
+		public IActionResult CreateNewRoute([FromBody]RouteDto route)
 		{
 			return Ok("Hello World!");
 		}
@@ -25,7 +30,7 @@ namespace WebAPI.Controllers
 		/// <param name="id">The original id of the route</param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateRoute(int id)
+		public IActionResult UpdateRoute(int id, [FromBody]RouteDto route)
 		{
 			return Ok("Hello World!");
 		}
@@ -37,7 +42,7 @@ namespace WebAPI.Controllers
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
 		[HttpGet("/routeNumber={routeNumber}")]
-		public IActionResult GetRoute(int routeNumber)
+		public ActionResult<RouteDto> GetRoute(int routeNumber)
 		{
 			return Ok($"Hello! Route is {routeNumber}");
 		}
@@ -49,7 +54,7 @@ namespace WebAPI.Controllers
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
 		[HttpGet("/matchRouteNumber={routeNumber}")]
-		public IActionResult GetRoutesByRouteNumber(int routeNumber)
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByRouteNumber(int routeNumber)
 		{
 			return Ok($"Hello! Route is {routeNumber}");
 		}
@@ -61,7 +66,7 @@ namespace WebAPI.Controllers
 		/// <param name="stop"></param>
 		/// <returns></returns>
 		[HttpGet("/stop={stop}")]
-		public IActionResult GetRoutesByStop(string stop)
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(string stop)
 		{
 			return Ok($"Hello! Stop is {stop}");
 		}

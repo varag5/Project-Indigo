@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -7,13 +10,15 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class RecordingController : ControllerBase
 	{
+		private readonly IRecordingService recordingService;
+
 		//GET: api/recording
 		/// <summary>
 		/// Gets all recordings.
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
-		public IActionResult GetRecordings()
+		public ActionResult<IEnumerable<RecordingDto>> GetRecordings()
 		{
 			return Ok("Hello World!");
 		}
@@ -25,7 +30,7 @@ namespace WebAPI.Controllers
 		/// <param name="id"></param>
 		/// <returns></returns>
 		[HttpGet("{id}")]
-		public IActionResult GetRecording(int id)
+		public ActionResult<RecordingDto> GetRecording(int id)
 		{
 			return Ok($"Hello! Recording is {id}");
 		}
@@ -36,7 +41,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewRecording()
+		public IActionResult CreateNewRecording([FromBody]RecordingDto recording)
 		{
 			return Ok("Hello World!");
 		}

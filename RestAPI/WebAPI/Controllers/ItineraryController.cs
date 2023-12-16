@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -7,13 +10,15 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class ItineraryController : ControllerBase
 	{
+		private readonly IItineraryService itineraryService;
+
 		// POST: api/itinerary
 		/// <summary>
 		/// Creates a new itinerary.
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewItinerary()
+		public IActionResult CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
 			return Ok("Hello World!");
 		}
@@ -25,7 +30,7 @@ namespace WebAPI.Controllers
 		/// <param name="id"></param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateItinerary(int id)
+		public IActionResult UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
 			return Ok("Hello World!");
 		}
@@ -38,7 +43,7 @@ namespace WebAPI.Controllers
 		/// <param name="end"></param>
 		/// <returns></returns>
 		[HttpGet]
-		public IActionResult GetItinerary(string start = null, string end = null)
+		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(string start = null, string end = null)
 		{
 			return Ok($"Hello! Start is {start} end is {end}");
 		}
@@ -50,7 +55,7 @@ namespace WebAPI.Controllers
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		[HttpGet("{userId}")]
-		public IActionResult GetItinerary(int userId)
+		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(int userId)
 		{
 			return Ok($"Hello! User is {userId}");
 		}
