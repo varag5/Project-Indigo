@@ -7,5 +7,39 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class UserController : ControllerBase
 	{
+		// POST: api/user
+		/// <summary>
+		/// Creates a new user.
+		/// </summary>
+		/// <returns></returns>
+		[HttpPost]
+		public IActionResult CreateUser()
+		{
+			return Ok("Hello World!");
+		}
+
+		//PUT: api/user/{id}
+		/// <summary>
+		/// Updates the specified user.
+		/// </summary>
+		/// <param name="id">The original id of the user</param>
+		/// <returns></returns>
+		[HttpPut("{id}")]
+		public IActionResult UpdateUser(int id)
+		{
+			return Ok("Hello World!");
+		}
+
+		//GET: api/user/{id}
+		/// <summary>
+		/// Gets a user by id.
+		/// </summary>
+		/// <param name="id">The id of the user</param>
+		/// <returns></returns>
+		[HttpGet("{id}")]
+		public IActionResult GetUser(int id)
+		{
+			return Ok($"Hello! User is {id}");
+		}
 	}
 }
