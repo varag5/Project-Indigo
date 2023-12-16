@@ -29,5 +29,41 @@ namespace WebAPI.Controllers
 		{
 			return Ok("Hello World!");
 		}
+
+		//GET: api/route/routeNumber={id}
+		/// <summary>
+		/// Gets a route by route number.
+		/// </summary>
+		/// <param name="routeNumber"></param>
+		/// <returns></returns>
+		[HttpGet("/routeNumber={routeNumber}")]
+		public IActionResult GetRoute(int routeNumber)
+		{
+			return Ok($"Hello! Route is {routeNumber}");
+		}
+
+		//GET: api/route/matchRouteNumber={routeNumber}
+		/// <summary>
+		/// Gets all routes that match the route number.
+		/// </summary>
+		/// <param name="routeNumber"></param>
+		/// <returns></returns>
+		[HttpGet("/matchRouteNumber={routeNumber}")]
+		public IActionResult GetRoutesByRouteNumber(int routeNumber)
+		{
+			return Ok($"Hello! Route is {routeNumber}");
+		}
+
+		//GET: api/route/stop={stop}
+		/// <summary>
+		/// Gets all routes that stop at the specified stop.
+		/// </summary>
+		/// <param name="stop"></param>
+		/// <returns></returns>
+		[HttpGet("/stop={stop}")]
+		public IActionResult GetRoutesByStop(string stop)
+		{
+			return Ok($"Hello! Stop is {stop}");
+		}
 	}
 }
