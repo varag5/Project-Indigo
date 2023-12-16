@@ -15,6 +15,8 @@ namespace WebAPI.Controllers
 		/// Creates a new user.
 		/// </summary>
 		/// <returns></returns>
+		/// <response code="201">The creation of the new user is succesful</response>
+		[ProducesResponseType(StatusCodes.Status201Created)]
 		[HttpPost]
 		public IActionResult CreateUser()
 		{
