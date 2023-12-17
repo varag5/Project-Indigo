@@ -29,6 +29,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="id">The original id of the user</param>
 		/// <returns></returns>
+		[ProducesResponseType(StatusCodes.Status202Accepted)]
 		[HttpPut("{id}")]
 		public IActionResult UpdateUser(int id)
 		{
@@ -41,6 +42,8 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="id">The id of the user</param>
 		/// <returns></returns>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("{id}")]
 		public IActionResult GetUser(int id)
 		{
