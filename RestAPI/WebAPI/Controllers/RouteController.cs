@@ -15,6 +15,8 @@ namespace WebAPI.Controllers
 		/// Creates a new route.
 		/// </summary>
 		/// <returns></returns>
+		/// <response code="201">The creation of the new route is succesful</response>
+		[ProducesResponseType(StatusCodes.Status201Created)]
 		[HttpPost]
 		public IActionResult CreateNewRoute()
 		{
@@ -27,6 +29,8 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="id">The original id of the route</param>
 		/// <returns></returns>
+		/// <response code="202">The update of the route is succesful</response>
+		[ProducesResponseType(StatusCodes.Status202Accepted)]
 		[HttpPut("{id}")]
 		public IActionResult UpdateRoute(int id)
 		{
@@ -39,6 +43,10 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
+		/// <response code="200">The found route is returned</response>
+		/// <response code="404">The route is not found</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/routeNumber={routeNumber}")]
 		public IActionResult GetRoute(int routeNumber)
 		{
@@ -51,6 +59,10 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
+		/// <response code="200">The found routes are returned</response>
+		/// <response code="404">The routes are not found</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/matchRouteNumber={routeNumber}")]
 		public IActionResult GetRoutesByRouteNumber(int routeNumber)
 		{
@@ -63,6 +75,10 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="stop"></param>
 		/// <returns></returns>
+		/// <response code="200">The found routes are returned</response>
+		/// <response code="404">The routes are not found</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/stop={stop}")]
 		public IActionResult GetRoutesByStop(string stop)
 		{

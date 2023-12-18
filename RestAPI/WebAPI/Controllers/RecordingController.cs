@@ -15,6 +15,8 @@ namespace WebAPI.Controllers
 		/// Gets all recordings.
 		/// </summary>
 		/// <returns></returns>
+		/// <response code="200">The found recordings are returned</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
 		[HttpGet]
 		public IActionResult GetRecordings()
 		{
@@ -27,6 +29,10 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
+		/// <response code="200">The found recording is returned</response>
+		/// <response code="404">The recording is not found</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("{id}")]
 		public IActionResult GetRecording(int id)
 		{
@@ -38,6 +44,8 @@ namespace WebAPI.Controllers
 		/// Creates a new recording.
 		/// </summary>
 		/// <returns></returns>
+		/// <response code="201">The creation of the new recording is succesful</response>
+		[ProducesResponseType(StatusCodes.Status201Created)]
 		[HttpPost]
 		public IActionResult CreateNewRecording()
 		{
