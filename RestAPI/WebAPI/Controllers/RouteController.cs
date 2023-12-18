@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewRoute([FromBody]RouteDto route)
+		public ActionResult<RouteDto> CreateNewRoute([FromBody]RouteDto route)
 		{
 			return Ok("Hello World!");
 		}
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
 		/// <param name="id">The original id of the route</param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateRoute(int id, [FromBody]RouteDto route)
+		public ActionResult<RouteDto> UpdateRoute(int id, [FromBody]RouteDto route)
 		{
 			return Ok("Hello World!");
 		}

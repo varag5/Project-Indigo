@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewRecording([FromBody]RecordingDto recording)
+		public ActionResult<ItineraryDto> CreateNewRecording([FromBody]RecordingDto recording)
 		{
 			return Ok("Hello World!");
 		}

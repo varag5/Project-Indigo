@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateNewItinerary([FromBody]ItineraryDto itinerary)
+		public ActionResult<ItineraryDto> CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
 			return Ok("Hello World!");
 		}
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
 		/// <param name="id"></param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
+		public ActionResult<ItineraryDto> UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
 			return Ok("Hello World!");
 		}

@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost]
-		public IActionResult CreateUser([FromBody]UserDto user)
+		public ActionResult<UserDto> CreateUser([FromBody]UserDto user)
 		{
 			return Ok("Hello World!");
 		}
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
 		/// <param name="id">The original id of the user</param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public IActionResult UpdateUser(int id, [FromBody]UserDto user)
+		public ActionResult<UserDto> UpdateUser(int id, [FromBody]UserDto user)
 		{
 			return Ok("Hello World!");
 		}
