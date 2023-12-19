@@ -15,10 +15,13 @@ namespace WebAPI.Controllers
 		/// <summary>
 		/// Creates a new user.
 		/// </summary>
+		/// <param name="user"></param>
 		/// <returns></returns>
 		[HttpPost]
-		public ActionResult<UserDto> CreateUser([FromBody]UserDto user)
+		public ActionResult<UserDto> CreateUser([FromBody] UserDto user)
 		{
+			userService.CreateUser(user);
+
 			return Ok("Hello World!");
 		}
 
@@ -27,10 +30,13 @@ namespace WebAPI.Controllers
 		/// Updates the specified user.
 		/// </summary>
 		/// <param name="id">The original id of the user</param>
+		/// <param name="user"></param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
-		public ActionResult<UserDto> UpdateUser(int id, [FromBody]UserDto user)
+		public ActionResult<UserDto> UpdateUser(int id, [FromBody] UserDto user)
 		{
+			userService.UpdateUser(id, user);
+
 			return Ok("Hello World!");
 		}
 
@@ -43,6 +49,8 @@ namespace WebAPI.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<UserDto> GetUser(int id)
 		{
+			userService.GetUserById(id);
+
 			return Ok($"Hello! User is {id}");
 		}
 	}
