@@ -20,6 +20,8 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<RouteDto> CreateNewRoute([FromBody]RouteDto route)
 		{
+			routeService.CreateNewRoute(route);
+
 			return Ok("Hello World!");
 		}
 
@@ -32,6 +34,8 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<RouteDto> UpdateRoute(int id, [FromBody]RouteDto route)
 		{
+			routeService.UpdateRoute(id, route);
+
 			return Ok("Hello World!");
 		}
 
@@ -42,8 +46,10 @@ namespace WebAPI.Controllers
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
 		[HttpGet("/routeNumber={routeNumber}")]
-		public ActionResult<RouteDto> GetRoute(int routeNumber)
+		public ActionResult<RouteDto> GetRoute(string routeNumber)
 		{
+			routeService.GetRoute(routeNumber);
+
 			return Ok($"Hello! Route is {routeNumber}");
 		}
 
@@ -54,8 +60,10 @@ namespace WebAPI.Controllers
 		/// <param name="routeNumber"></param>
 		/// <returns></returns>
 		[HttpGet("/matchRouteNumber={routeNumber}")]
-		public ActionResult<IEnumerable<RouteDto>> GetRoutesByRouteNumber(int routeNumber)
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByRouteNumber(string routeNumber)
 		{
+			routeService.GetRoutesByRouteNumber(routeNumber);
+
 			return Ok($"Hello! Route is {routeNumber}");
 		}
 
@@ -68,7 +76,23 @@ namespace WebAPI.Controllers
 		[HttpGet("/stop={stop}")]
 		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(string stop)
 		{
+			routeService.GetRoutesByStop(stop);
+
 			return Ok($"Hello! Stop is {stop}");
+		}
+
+		//GET: api/route/stopId={stop}
+		/// <summary>
+		/// Gets all routes that stop at the specified stop.
+		/// </summary>
+		/// <param name="stop"></param>
+		/// <returns></returns>
+		[HttpGet("/stopId={stop}")]
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(int stopId)
+		{
+			routeService.GetRoutesByStopId(stopId);
+
+			return Ok($"Hello! Stop is {stopId}");
 		}
 	}
 }
