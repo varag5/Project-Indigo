@@ -9,8 +9,8 @@ namespace Bll.Services
 {
 	public interface IUserService
 	{
-		void CreateUser(UserDto user);
-		void GetUserById(int id);
-		void UpdateUser(int id, UserDto user);
+		UserDto CreateUser(UserDto user);
+		UserDto GetUserById(int id);
+		UserDto UpdateUser(int id, UserDto user);
 	}
 }

@@ -9,11 +9,11 @@ namespace Bll.Services
 {
 	public interface IRouteService
 	{
-		void CreateNewRoute(RouteDto route);
-		void GetRoute(string routeNumber);
-		void GetRoutesByRouteNumber(string routeNumber);
-		void GetRoutesByStop(string stop);
-		void GetRoutesByStopId(int stopId);
-		void UpdateRoute(int id, RouteDto route);
+		RouteDto CreateNewRoute(RouteDto route);
+		RouteDto GetRoute(string routeNumber);
+		IEnumerable<RouteDto> GetRoutesByRouteNumber(string routeNumber);
+		IEnumerable<RouteDto> GetRoutesByStop(string stop);
+		IEnumerable<RouteDto> GetRoutesByStopId(int stopId);
+		RouteDto UpdateRoute(int id, RouteDto route);
 	}
 }

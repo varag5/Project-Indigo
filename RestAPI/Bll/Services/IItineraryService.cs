@@ -9,9 +9,9 @@ namespace Bll.Services
 {
 	public interface IItineraryService
 	{
-		void CreateNewItinerary(ItineraryDto itinerary);
-		void GetItinerary(int userId);
-		void GetItinerary(string start, string end);
-		void UpdateItinerary(int id, ItineraryDto itinerary);
+		ItineraryDto CreateNewItinerary(ItineraryDto itinerary);
+		ItineraryDto GetItinerary(int userId);
+		ItineraryDto GetItinerary(string start, string end);
+		ItineraryDto UpdateItinerary(int id, ItineraryDto itinerary);
 	}
 }
