@@ -20,6 +20,8 @@ namespace WebAPI.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<RecordingDto>> GetRecordings()
 		{
+			recordingService.GetRecordings();
+
 			return Ok("Hello World!");
 		}
 
@@ -32,6 +34,8 @@ namespace WebAPI.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<RecordingDto> GetRecording(int id)
 		{
+			recordingService.GetRecording(id);
+
 			return Ok($"Hello! Recording is {id}");
 		}
 
@@ -43,6 +47,8 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<ItineraryDto> CreateNewRecording([FromBody]RecordingDto recording)
 		{
+			recordingService.CreateNewRecording(recording);
+
 			return Ok("Hello World!");
 		}
 	}

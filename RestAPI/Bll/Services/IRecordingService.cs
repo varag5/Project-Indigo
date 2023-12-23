@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bll.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace Bll.Services
 {
 	public interface IRecordingService
 	{
+		void CreateNewRecording(RecordingDto recording);
+		void GetRecording(int id);
+		void GetRecordings();
 	}
 }
