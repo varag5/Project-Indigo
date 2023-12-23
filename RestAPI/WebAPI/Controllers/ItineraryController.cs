@@ -20,6 +20,8 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<ItineraryDto> CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
+			itineraryService.CreateNewItinerary(itinerary);
+			
 			return Ok("Hello World!");
 		}
 
@@ -32,6 +34,8 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<ItineraryDto> UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
+			itineraryService.UpdateItinerary(id, itinerary);
+
 			return Ok("Hello World!");
 		}
 
@@ -45,6 +49,8 @@ namespace WebAPI.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(string start = null, string end = null)
 		{
+			itineraryService.GetItinerary(start, end);
+
 			return Ok($"Hello! Start is {start} end is {end}");
 		}
 
@@ -57,6 +63,8 @@ namespace WebAPI.Controllers
 		[HttpGet("{userId}")]
 		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(int userId)
 		{
+			itineraryService.GetItinerary(userId);
+
 			return Ok($"Hello! User is {userId}");
 		}
 	}
