@@ -85,7 +85,7 @@ namespace WebAPI.Controllers
 		/// <summary>
 		/// Gets all routes that stop at the specified stop.
 		/// </summary>
-		/// <param name="stop"></param>
+		/// <param name="stopId"></param>
 		/// <returns></returns>
 		[HttpGet("/stopId={stop}")]
 		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(int stopId)
