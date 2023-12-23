@@ -12,6 +12,11 @@ namespace WebAPI.Controllers
 	{
 		private readonly IRouteService routeService;
 
+		public RouteController(IRouteService service)
+		{
+			routeService = service;
+		}
+
 		// POST: api/route
 		/// <summary>
 		/// Creates a new route.

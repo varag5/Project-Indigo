@@ -11,6 +11,11 @@ namespace WebAPI.Controllers
 	{
 		private readonly IUserService userService;
 
+		public UserController(IUserService service)
+		{
+			userService = service;
+		}
+
 		// POST: api/user
 		/// <summary>
 		/// Creates a new user.

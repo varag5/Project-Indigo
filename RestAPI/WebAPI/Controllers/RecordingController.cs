@@ -12,6 +12,11 @@ namespace WebAPI.Controllers
 	{
 		private readonly IRecordingService recordingService;
 
+		public RecordingController(IRecordingService service)
+		{
+			recordingService = service;
+		}
+
 		//GET: api/recording
 		/// <summary>
 		/// Gets all recordings.
