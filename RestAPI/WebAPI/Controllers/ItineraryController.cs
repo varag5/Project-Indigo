@@ -12,12 +12,17 @@ namespace WebAPI.Controllers
 	{
 		private readonly IItineraryService itineraryService;
 
-		// POST: api/itinerary
-		/// <summary>
-		/// Creates a new itinerary.
-		/// </summary>
-		/// <returns></returns>
-		[HttpPost]
+        public ItineraryController(IItineraryService service)
+        {
+			itineraryService = service;
+        }
+
+        // POST: api/itinerary
+        /// <summary>
+        /// Creates a new itinerary.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
 		public ActionResult<ItineraryDto> CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
 			itineraryService.CreateNewItinerary(itinerary);
