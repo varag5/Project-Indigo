@@ -10,7 +10,7 @@ namespace Bll.Services
 	public interface IRecordingService
 	{
 		void CreateNewRecording(RecordingDto recording);
-		void GetRecording(int id);
-		void GetRecordings();
+		RecordingDto GetRecording(int id);
+		IEnumerable<RecordingDto> GetRecordings();
 	}
 }
