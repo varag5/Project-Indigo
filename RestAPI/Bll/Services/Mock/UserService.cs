@@ -9,17 +9,17 @@ namespace Bll.Services.Mock
 	{
 		public UserDto CreateUser(UserDto user)
 		{
-			throw new NotImplementedException();
+			return new UserDto();
 		}
 
 		public UserDto GetUserById(int id)
 		{
-			throw new NotImplementedException();
+			return new UserDto();
 		}
 
 		public UserDto UpdateUser(int id, UserDto user)
 		{
-			throw new NotImplementedException();
+			return new UserDto();
 		}
 	}
 }

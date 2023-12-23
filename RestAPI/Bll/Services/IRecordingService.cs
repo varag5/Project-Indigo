@@ -9,7 +9,7 @@ namespace Bll.Services
 {
 	public interface IRecordingService
 	{
-		void CreateNewRecording(RecordingDto recording);
+		RecordingDto CreateNewRecording(RecordingDto recording);
 		RecordingDto GetRecording(int id);
 		IEnumerable<RecordingDto> GetRecordings();
 	}

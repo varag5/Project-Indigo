@@ -9,32 +9,41 @@ namespace Bll.Services.Mock
 	{
 		public RouteDto CreateNewRoute(RouteDto route)
 		{
-			throw new NotImplementedException();
+			return new RouteDto();
 		}
 
 		public RouteDto GetRoute(string routeNumber)
 		{
-			throw new NotImplementedException();
+			return new RouteDto();
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByRouteNumber(string routeNumber)
 		{
-			throw new NotImplementedException();
+			return new List<RouteDto>()
+			{
+				new RouteDto(),
+			};
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByStop(string stop)
 		{
-			throw new NotImplementedException();
+			return new List<RouteDto>()
+			{
+				new RouteDto(),
+			};
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByStopId(int stopId)
 		{
-			throw new NotImplementedException();
+			return new List<RouteDto>() 
+			{ 
+				new RouteDto(), 
+			};
 		}
 
 		public RouteDto UpdateRoute(int id, RouteDto route)
 		{
-			throw new NotImplementedException();
+			return new RouteDto();
 		}
 	}
 }

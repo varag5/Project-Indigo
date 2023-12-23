@@ -7,19 +7,22 @@ namespace Bll.Services.Mock
 {
 	public class RecordingService : IRecordingService
 	{
-		public void CreateNewRecording(RecordingDto recording)
+		public RecordingDto CreateNewRecording(RecordingDto recording)
 		{
-			throw new NotImplementedException();
+			return new RecordingDto();
 		}
 
 		public RecordingDto GetRecording(int id)
 		{
-			throw new NotImplementedException();
+			return new RecordingDto();
 		}
 
 		public IEnumerable<RecordingDto> GetRecordings()
 		{
-			throw new NotImplementedException();
+			return new List<RecordingDto>()
+			{
+				new RecordingDto(),
+			};
 		}
 	}
 }

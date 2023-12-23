@@ -9,22 +9,22 @@ namespace Bll.Services.Mock
 	{
 		public ItineraryDto CreateNewItinerary(ItineraryDto itinerary)
 		{
-			throw new NotImplementedException();
+			return new ItineraryDto();
 		}
 
 		public ItineraryDto GetItinerary(int userId)
 		{
-			throw new NotImplementedException();
+			return new ItineraryDto();
 		}
 
 		public ItineraryDto GetItinerary(string start, string end)
 		{
-			throw new NotImplementedException();
+			return new ItineraryDto();
 		}
 
 		public ItineraryDto UpdateItinerary(int id, ItineraryDto itinerary)
 		{
-			throw new NotImplementedException();
+			return new ItineraryDto();
 		}
 	}
 }
