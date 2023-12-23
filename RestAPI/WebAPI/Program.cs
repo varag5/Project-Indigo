@@ -26,6 +26,9 @@ namespace WebAPI
 			});
 
 			builder.Services.AddTransient<IItineraryService, Bll.Services.Mock.ItineraryService>();
+			builder.Services.AddTransient<IRecordingService, Bll.Services.Mock.RecordingService>();
+			builder.Services.AddTransient<IRouteService, Bll.Services.Mock.RouteService>();
+			builder.Services.AddTransient<IUserService, Bll.Services.Mock.UserService>();
 
 			var app = builder.Build();
 
