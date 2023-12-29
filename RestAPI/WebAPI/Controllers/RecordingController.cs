@@ -3,6 +3,7 @@ using Bll.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -30,9 +31,7 @@ namespace WebAPI.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<RecordingDto>> GetRecordings()
 		{
-			recordingService.GetRecordings();
-
-			return Ok("Hello World!");
+			return recordingService.GetRecordings().ToList();
 		}
 
 		//GET: api/recording/{id}
@@ -48,9 +47,7 @@ namespace WebAPI.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<RecordingDto> GetRecording(int id)
 		{
-			recordingService.GetRecording(id);
-
-			return Ok($"Hello! Recording is {id}");
+			return recordingService.GetRecording(id);
 		}
 
 		// POST: api/recording
@@ -63,9 +60,9 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<ItineraryDto> CreateNewRecording([FromBody]RecordingDto recording)
 		{
-			recordingService.CreateNewRecording(recording);
-
-			return Ok("Hello World!");
+			var rec = recordingService.CreateNewRecording(recording);
+			var location = Url.Action(nameof(GetRecording), new { id = rec.ID }) ?? $"api/recording/{rec.ID}";
+			return Created(location, rec);
 		}
 	}
 }

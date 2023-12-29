@@ -30,9 +30,10 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<UserDto> CreateUser([FromBody] UserDto user)
 		{
-			userService.CreateUser(user);
+			var cu = userService.CreateUser(user);
+			var location = Url.Action(nameof(GetUser), new { id = cu.ID }) ?? $"api/user/{cu.ID}";
 
-			return Ok("Hello World!");
+			return Created(location, cu);
 		}
 
 		//PUT: api/user/{id}
@@ -47,9 +48,7 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<UserDto> UpdateUser(int id, [FromBody] UserDto user)
 		{
-			userService.UpdateUser(id, user);
-
-			return Ok("Hello World!");
+			return Accepted(userService.UpdateUser(id, user));
 		}
 
 		//GET: api/user/{id}
@@ -65,9 +64,7 @@ namespace WebAPI.Controllers
 		[HttpGet("{id}")]
 		public ActionResult<UserDto> GetUser(int id)
 		{
-			userService.GetUserById(id);
-
-			return Ok($"Hello! User is {id}");
+			return userService.GetUserById(id);
 		}
 	}
 }
