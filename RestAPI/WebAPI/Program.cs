@@ -1,3 +1,4 @@
+using Bll.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +21,11 @@ namespace WebAPI
 				configure.Version = "v1";
 				configure.Description = "An ASP.NET Web API for the Indigo Project";
 			});
+
+			builder.Services.AddTransient<IItineraryService, Bll.Services.Mock.ItineraryService>();
+			builder.Services.AddTransient<IRecordingService, Bll.Services.Mock.RecordingService>();
+			builder.Services.AddTransient<IRouteService, Bll.Services.Mock.RouteService>();
+			builder.Services.AddTransient<IUserService, Bll.Services.Mock.UserService>();
 
 			var app = builder.Build();
 
