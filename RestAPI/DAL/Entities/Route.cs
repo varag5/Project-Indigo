@@ -12,5 +12,7 @@ namespace DAL.Entities
         public string RouteNumber { get; set; }
         [Required]
         public string Provider { get; set; }
+
+        public ICollection<Stop> Stops { get; } = new List<Stop>();
     }
 }

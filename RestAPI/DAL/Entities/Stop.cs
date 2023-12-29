@@ -10,5 +10,7 @@ namespace DAL.Entities
         public int ID { get; set; }
         [Required]
         public string Name { get; set; }
+
+        public ICollection<Route> Routes { get; } = new List<Route>();
     }
 }

@@ -25,7 +25,10 @@ namespace DAL
 		{
 			base.OnModelCreating(modelBuilder);
 
-
+			modelBuilder.Entity<Route>()
+				.HasMany(r => r.Stops)
+				.WithMany(s => s.Routes)
+				.UsingEntity<RouteStop>();
 		}
 	}
 }

@@ -12,5 +12,7 @@ namespace DAL.Entities
 		public Direction Direction { get; set; }
 		[Required]
 		public int Order { get; set; }
+		public int RouteID { get; set; }
+		public int StopID { get; set; }
     }
 }
