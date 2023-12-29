@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,16 @@ namespace DAL
 				.HasMany(r => r.Stops)
 				.WithMany(s => s.Routes)
 				.UsingEntity<RouteStop>();
+
+			var recordingTypeConverter = new EnumToStringConverter<RecordingType>();
+			modelBuilder.Entity<Recording>()
+				.Property(r => r.RecordingType)
+				.HasConversion(recordingTypeConverter);
+
+			var directionTypeConverter = new EnumToStringConverter<Direction>();
+			modelBuilder.Entity<RouteStop>()
+				.Property(rs => rs.Direction)
+				.HasConversion(directionTypeConverter);
 		}
 	}
 }
