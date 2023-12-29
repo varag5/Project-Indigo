@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -10,6 +13,13 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class ItineraryController : ControllerBase
 	{
+		private readonly IItineraryService itineraryService;
+
+        public ItineraryController(IItineraryService service)
+        {
+			itineraryService = service;
+        }
+
 		// POST: api/itinerary
 		/// <summary>
 		/// Creates a new itinerary.
@@ -18,8 +28,10 @@ namespace WebAPI.Controllers
 		/// <response code="201">The creation of the new itinerary is succesful</response>
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[HttpPost]
-		public IActionResult CreateNewItinerary()
+		public ActionResult<ItineraryDto> CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
+			itineraryService.CreateNewItinerary(itinerary);
+			
 			return Ok("Hello World!");
 		}
 
@@ -32,8 +44,10 @@ namespace WebAPI.Controllers
 		/// <response code="202">The update of the itinerary is succesful</response>
 		[ProducesResponseType(StatusCodes.Status202Accepted)]
 		[HttpPut("{id}")]
-		public IActionResult UpdateItinerary(int id)
+		public ActionResult<ItineraryDto> UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
+			itineraryService.UpdateItinerary(id, itinerary);
+
 			return Ok("Hello World!");
 		}
 
@@ -49,8 +63,10 @@ namespace WebAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet]
-		public IActionResult GetItinerary(string start = null, string end = null)
+		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(string start = null, string end = null)
 		{
+			itineraryService.GetItinerary(start, end);
+
 			return Ok($"Hello! Start is {start} end is {end}");
 		}
 
@@ -65,8 +81,10 @@ namespace WebAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("{userId}")]
-		public IActionResult GetItinerary(int userId)
+		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(int userId)
 		{
+			itineraryService.GetItinerary(userId);
+
 			return Ok($"Hello! User is {userId}");
 		}
 	}

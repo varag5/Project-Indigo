@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bll.Dtos;
+using Bll.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -10,6 +13,13 @@ namespace WebAPI.Controllers
 	[ApiController]
 	public class RouteController : ControllerBase
 	{
+		private readonly IRouteService routeService;
+
+		public RouteController(IRouteService service)
+		{
+			routeService = service;
+		}
+
 		// POST: api/route
 		/// <summary>
 		/// Creates a new route.
@@ -18,8 +28,10 @@ namespace WebAPI.Controllers
 		/// <response code="201">The creation of the new route is succesful</response>
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[HttpPost]
-		public IActionResult CreateNewRoute()
+		public ActionResult<RouteDto> CreateNewRoute([FromBody]RouteDto route)
 		{
+			routeService.CreateNewRoute(route);
+
 			return Ok("Hello World!");
 		}
 
@@ -32,8 +44,10 @@ namespace WebAPI.Controllers
 		/// <response code="202">The update of the route is succesful</response>
 		[ProducesResponseType(StatusCodes.Status202Accepted)]
 		[HttpPut("{id}")]
-		public IActionResult UpdateRoute(int id)
+		public ActionResult<RouteDto> UpdateRoute(int id, [FromBody]RouteDto route)
 		{
+			routeService.UpdateRoute(id, route);
+
 			return Ok("Hello World!");
 		}
 
@@ -48,8 +62,10 @@ namespace WebAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/routeNumber={routeNumber}")]
-		public IActionResult GetRoute(int routeNumber)
+		public ActionResult<RouteDto> GetRoute(string routeNumber)
 		{
+			routeService.GetRoute(routeNumber);
+
 			return Ok($"Hello! Route is {routeNumber}");
 		}
 
@@ -64,8 +80,10 @@ namespace WebAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/matchRouteNumber={routeNumber}")]
-		public IActionResult GetRoutesByRouteNumber(int routeNumber)
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByRouteNumber(string routeNumber)
 		{
+			routeService.GetRoutesByRouteNumber(routeNumber);
+
 			return Ok($"Hello! Route is {routeNumber}");
 		}
 
@@ -80,9 +98,25 @@ namespace WebAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[HttpGet("/stop={stop}")]
-		public IActionResult GetRoutesByStop(string stop)
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(string stop)
 		{
+			routeService.GetRoutesByStop(stop);
+
 			return Ok($"Hello! Stop is {stop}");
+		}
+
+		//GET: api/route/stopId={stop}
+		/// <summary>
+		/// Gets all routes that stop at the specified stop.
+		/// </summary>
+		/// <param name="stopId"></param>
+		/// <returns></returns>
+		[HttpGet("/stopId={stop}")]
+		public ActionResult<IEnumerable<RouteDto>> GetRoutesByStop(int stopId)
+		{
+			routeService.GetRoutesByStopId(stopId);
+
+			return Ok($"Hello! Stop is {stopId}");
 		}
 	}
 }
