@@ -3,6 +3,7 @@ using Bll.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -30,9 +31,9 @@ namespace WebAPI.Controllers
 		[HttpPost]
 		public ActionResult<ItineraryDto> CreateNewItinerary([FromBody]ItineraryDto itinerary)
 		{
-			itineraryService.CreateNewItinerary(itinerary);
-			
-			return Ok("Hello World!");
+			var it = itineraryService.CreateNewItinerary(itinerary);
+			var location = Url.Action(nameof(GetItinerary), new { id = it.ID }) ?? $"api/itinerary/{it.ID}";
+			return Created(location, it);
 		}
 
 		//PUT: api/itinerary/{id}
@@ -40,15 +41,14 @@ namespace WebAPI.Controllers
 		/// Modify an existing itinerary.
 		/// </summary>
 		/// <param name="id"></param>
+		/// <param name="itinerary"></param>
 		/// <returns></returns>
 		/// <response code="202">The update of the itinerary is succesful</response>
 		[ProducesResponseType(StatusCodes.Status202Accepted)]
 		[HttpPut("{id}")]
 		public ActionResult<ItineraryDto> UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
-			itineraryService.UpdateItinerary(id, itinerary);
-
-			return Ok("Hello World!");
+			return Accepted(itineraryService.UpdateItinerary(id, itinerary));
 		}
 
 		//GET: api/itinerary/start={start}&end={end}
@@ -65,9 +65,7 @@ namespace WebAPI.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(string start = null, string end = null)
 		{
-			itineraryService.GetItinerary(start, end);
-
-			return Ok($"Hello! Start is {start} end is {end}");
+			return itineraryService.GetItinerary(start, end).ToList();
 		}
 
 		//GET: api/itinerary/user={userId}
@@ -83,9 +81,7 @@ namespace WebAPI.Controllers
 		[HttpGet("{userId}")]
 		public ActionResult<IEnumerable<ItineraryDto>> GetItinerary(int userId)
 		{
-			itineraryService.GetItinerary(userId);
-
-			return Ok($"Hello! User is {userId}");
+			return itineraryService.GetItinerary(userId).ToList();
 		}
 	}
 }
