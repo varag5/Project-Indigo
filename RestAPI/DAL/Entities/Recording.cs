@@ -6,5 +6,6 @@ namespace DAL.Entities
 {
 	public class Recording
 	{
+        public int ID { get; set; }
 	}
 }

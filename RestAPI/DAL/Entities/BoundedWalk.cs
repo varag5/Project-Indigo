@@ -6,5 +6,6 @@ namespace DAL.Entities
 {
 	public class BoundedWalk
 	{
+        public int ID { get; set; }
 	}
 }

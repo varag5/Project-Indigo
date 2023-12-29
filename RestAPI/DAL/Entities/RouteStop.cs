@@ -6,5 +6,6 @@ namespace DAL.Entities
 {
 	public class RouteStop
 	{
+        public int ID { get; set; }
 	}
 }

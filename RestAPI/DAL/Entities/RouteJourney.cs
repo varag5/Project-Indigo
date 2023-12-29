@@ -6,5 +6,6 @@ namespace DAL.Entities
 {
 	public class RouteJourney
 	{
+        public int ID { get; set; }
 	}
 }
