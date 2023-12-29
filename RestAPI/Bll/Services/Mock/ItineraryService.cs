@@ -12,14 +12,14 @@ namespace Bll.Services.Mock
 			return new ItineraryDto();
 		}
 
-		public ItineraryDto GetItinerary(int userId)
+		public IEnumerable<ItineraryDto> GetItinerary(int userId)
 		{
-			return new ItineraryDto();
+			return new List<ItineraryDto>();
 		}
 
-		public ItineraryDto GetItinerary(string start, string end)
+		public IEnumerable<ItineraryDto> GetItinerary(string start, string end)
 		{
-			return new ItineraryDto();
+			return new List<ItineraryDto>();
 		}
 
 		public ItineraryDto UpdateItinerary(int id, ItineraryDto itinerary)
