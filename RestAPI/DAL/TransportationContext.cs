@@ -16,11 +16,11 @@ namespace DAL
 		public DbSet<BoundedWalk> BoundedWalks { get; set; }
 		public DbSet<Walk> Walks { get; set; }
 		public DbSet<Itinerary> Itineraries { get; set; }
-        public DbSet<Recording> Recordings { get; set; }
-        public DbSet<RouteJourney> RouteJourneys { get; set; }
-        public DbSet<RouteStop> RouteStops { get; set; }
+		public DbSet<Recording> Recordings { get; set; }
+		public DbSet<RouteJourney> RouteJourneys { get; set; }
+		public DbSet<RouteStop> RouteStops { get; set; }
 
-        public TransportationContext(DbContextOptions<TransportationContext> options) : base(options) { }
+		public TransportationContext(DbContextOptions<TransportationContext> options) : base(options) { }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
