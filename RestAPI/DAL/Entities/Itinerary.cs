@@ -12,5 +12,7 @@ namespace DAL.Entities
 		public string Start { get; set; }
 		[Required]
 		public string End { get; set; }
+
+		public ICollection<Stop> Stops { get; } = new List<Stop>();
 	}
 }
