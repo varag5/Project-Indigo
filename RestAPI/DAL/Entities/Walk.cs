@@ -6,6 +6,6 @@ namespace DAL.Entities
 {
 	public class Walk
 	{
-        public int ID { get; set; }
-    }
+		public int ID { get; set; }
+	}
 }

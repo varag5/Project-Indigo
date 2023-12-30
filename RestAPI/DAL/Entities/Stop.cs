@@ -7,10 +7,10 @@ namespace DAL.Entities
 {
 	public class Stop
 	{
-        public int ID { get; set; }
-        [Required]
-        public string Name { get; set; }
+		public int ID { get; set; }
+		[Required]
+		public string Name { get; set; }
 
-        public ICollection<Route> Routes { get; } = new List<Route>();
-    }
+		public ICollection<Route> Routes { get; } = new List<Route>();
+	}
 }
