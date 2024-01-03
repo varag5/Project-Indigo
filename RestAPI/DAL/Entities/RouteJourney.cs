@@ -8,9 +8,9 @@ namespace DAL.Entities
 	{
 		public int ID { get; set; }
 
-		public Itinerary Itinerary { get; set; }
-		public Stop Start { get; set; }
-		public Stop End { get; set; }
-		public Route Route { get; set; }
+		public Itinerary? Itinerary { get; set; }
+		public Stop? Start { get; set; }
+		public Stop? End { get; set; }
+		public Route? Route { get; set; }
 	}
 }
