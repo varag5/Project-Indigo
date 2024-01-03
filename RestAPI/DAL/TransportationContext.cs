@@ -20,7 +20,15 @@ namespace DAL
 		public DbSet<RouteJourney> RouteJourneys { get; set; }
 		public DbSet<RouteStop> RouteStops { get; set; }
 
+
+		public TransportationContext() : base() { }
+
 		public TransportationContext(DbContextOptions<TransportationContext> options) : base(options) { }
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
