@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using ServiceProvider = Bll.Services.Mock;
+
 namespace WebAPI
 {
 	public class Program
@@ -22,10 +24,10 @@ namespace WebAPI
 				configure.Description = "An ASP.NET Web API for the Indigo Project";
 			});
 
-			builder.Services.AddTransient<IItineraryService, Bll.Services.Mock.ItineraryService>();
-			builder.Services.AddTransient<IRecordingService, Bll.Services.Mock.RecordingService>();
-			builder.Services.AddTransient<IRouteService, Bll.Services.Mock.RouteService>();
-			builder.Services.AddTransient<IUserService, Bll.Services.Mock.UserService>();
+			builder.Services.AddTransient<IItineraryService, ServiceProvider.ItineraryService>();
+			builder.Services.AddTransient<IRecordingService, ServiceProvider.RecordingService>();
+			builder.Services.AddTransient<IRouteService, ServiceProvider.RouteService>();
+			builder.Services.AddTransient<IUserService, ServiceProvider.UserService>();
 
 			var app = builder.Build();
 
